@@ -1,0 +1,31 @@
+<section class="hero section">
+  <div class="wrap">
+    {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+    <h1>{{ section.settings.heading }}</h1>
+    {%- if section.settings.text != blank -%}<p class="lead">{{ section.settings.text }}</p>{%- endif -%}
+    <div class="actions">
+      {%- if section.settings.button_label != blank -%}
+        <a class="button" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">{{ section.settings.button_label }}</a>
+      {%- endif -%}
+      {%- if section.settings.button2_label != blank and section.settings.button2_link != blank -%}
+        <a class="button ghost" href="{{ section.settings.button2_link }}">{{ section.settings.button2_label }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Small line above", "default": "$ sebayt --list" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Digital things worth keeping." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Guides, templates and tools. Buy once, download instantly, keep forever." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Browse everything" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "text", "id": "button2_label", "label": "Second button label" },
+    { "type": "url", "id": "button2_link", "label": "Second button link" }
+  ],
+  "presets": [{ "name": "Hero" }]
+}
+{% endschema %}

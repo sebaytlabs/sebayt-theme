@@ -1,0 +1,43 @@
+<section class="section">
+  <div class="wrap">
+    <p class="kick">{{ section.settings.kicker }}</p>
+    <h2>{{ section.settings.heading }}</h2>
+    <div class="beliefs">
+      {%- for block in section.blocks -%}
+        <div {{ block.shopify_attributes }}>
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "What we believe",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Small line above", "default": "What we believe" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Curious first. Then we build." }
+  ],
+  "blocks": [
+    {
+      "type": "belief",
+      "name": "Belief",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Curious" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "We ask why it's done that way, and whether it has to be." }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [{
+    "name": "What we believe",
+    "blocks": [
+      { "type": "belief", "settings": { "title": "Curious", "text": "We ask why it's done that way, and whether it has to be. Most of the time it doesn't." } },
+      { "type": "belief", "settings": { "title": "Economical", "text": "Good things shouldn't cost a fortune. The first thing we built is free." } },
+      { "type": "belief", "settings": { "title": "Good for the world", "text": "If there's a version that's kinder to people and the planet, that's the one we make." } }
+    ]
+  }]
+}
+{% endschema %}

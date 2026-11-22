@@ -1,0 +1,37 @@
+<section class="section">
+  <div class="wrap split">
+    <div>
+      <p class="kick">{{ section.settings.notes_kicker }}</p>
+      <h2>{{ section.settings.notes_heading }}</h2>
+      <p>{{ section.settings.notes_text }}</p>
+      <p>{{ section.settings.notes_text2 }}</p>
+      <p><a class="button" href="{{ section.settings.notes_link | default: '/pages/notes' }}">{{ section.settings.notes_button }}</a></p>
+    </div>
+    <div class="name-card">
+      <p class="kick">{{ section.settings.name_kicker }}</p>
+      <p>{{ section.settings.name_text }}</p>
+      <p><a href="{{ section.settings.name_link | default: '/pages/about' }}"><strong>{{ section.settings.name_button }} &rarr;</strong></a></p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Notes and name",
+  "settings": [
+    { "type": "header", "content": "Notes" },
+    { "type": "text", "id": "notes_kicker", "label": "Small line", "default": "Read along" },
+    { "type": "text", "id": "notes_heading", "label": "Heading", "default": "Our notes, as we take them" },
+    { "type": "textarea", "id": "notes_text", "label": "Text", "default": "We read a lot: skim the whole book first, then write down what we actually want from it." },
+    { "type": "textarea", "id": "notes_text2", "label": "Second paragraph", "default": "Those notes live in SimpleBrain, and they show up here the moment we save them." },
+    { "type": "text", "id": "notes_button", "label": "Button label", "default": "Read the notes" },
+    { "type": "url", "id": "notes_link", "label": "Button link" },
+    { "type": "header", "content": "The name" },
+    { "type": "text", "id": "name_kicker", "label": "Small line", "default": "Where the name comes from" },
+    { "type": "textarea", "id": "name_text", "label": "Text", "default": "Sebayt is an old Egyptian word, sbꜣyt. It means teachings: wisdom handed from a teacher to a student, so the next person doesn't start from zero. Labs is the other half. We make things." },
+    { "type": "text", "id": "name_button", "label": "Link label", "default": "Read our story" },
+    { "type": "url", "id": "name_link", "label": "Link" }
+  ],
+  "presets": [{ "name": "Notes and name" }]
+}
+{% endschema %}

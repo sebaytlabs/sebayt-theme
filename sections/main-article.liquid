@@ -1,0 +1,12 @@
+<section class="section">
+  <div class="wrap">
+    <p class="muted">{{ article.published_at | date: '%B %-d, %Y' }}</p>
+    <h1>{{ article.title }}</h1>
+    <div class="rte">{{ article.content }}</div>
+    <p style="margin-top: 32px;"><a href="{{ blog.url }}">&larr; {{ blog.title }}</a></p>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Article" }
+{% endschema %}

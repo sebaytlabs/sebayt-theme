@@ -1,0 +1,61 @@
+<footer class="site-footer">
+  <div class="pattern" aria-hidden="true"></div>
+  <div class="wrap foot-grid">
+    <div class="foot-about">
+      <a class="brand" href="{{ routes.root_url }}"><span class="brand-main">SEBAYT</span><span class="brand-sub">LABS</span></a>
+      <p>{{ section.settings.tagline }}</p>
+    </div>
+    <div>
+      <h3>Explore</h3>
+      <nav aria-label="Footer">
+        {%- for link in linklists[section.settings.menu].links -%}
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        {%- endfor -%}
+      </nav>
+    </div>
+    <div>
+      <h3>Follow</h3>
+      <nav aria-label="Social accounts">
+        {%- if settings.social_youtube != blank -%}<a href="{{ settings.social_youtube }}" rel="noopener">YouTube</a>{%- endif -%}
+        {%- if settings.social_instagram != blank -%}<a href="{{ settings.social_instagram }}" rel="noopener">Instagram</a>{%- endif -%}
+        {%- if settings.social_facebook != blank -%}<a href="{{ settings.social_facebook }}" rel="noopener">Facebook</a>{%- endif -%}
+        {%- if settings.social_threads != blank -%}<a href="{{ settings.social_threads }}" rel="noopener">Threads</a>{%- endif -%}
+      </nav>
+    </div>
+    <div class="foot-news">
+      <h3>{{ section.settings.news_heading }}</h3>
+      <p>{{ section.settings.news_text }}</p>
+      {%- form 'customer', id: 'footer-newsletter' -%}
+        {%- if form.posted_successfully? -%}
+          <p class="news-ok">You're in. Thank you.</p>
+        {%- else -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <label class="skip" for="footer-email">Email</label>
+          <div class="news-row">
+            <input id="footer-email" type="email" name="contact[email]" placeholder="you@email.com" autocomplete="email" required>
+            <button class="button gold" type="submit">Subscribe</button>
+          </div>
+          {%- if form.errors -%}<p class="news-err">{{ form.errors | default_errors }}</p>{%- endif -%}
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+  <div class="wrap foot-base">
+    <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</span>
+    <span class="foot-policies">
+      {%- for policy in shop.policies -%}<a href="{{ policy.url }}">{{ policy.title }}</a>{%- endfor -%}
+    </span>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
+    { "type": "textarea", "id": "tagline", "label": "Short line under the name", "default": "We build the better version of things, for the love of building them, and we teach how they work." },
+    { "type": "text", "id": "news_heading", "label": "Newsletter heading", "default": "Get the next one first" },
+    { "type": "textarea", "id": "news_text", "label": "Newsletter text", "default": "New tools, new notes, and what we're learning. A few emails a month, never spam." }
+  ]
+}
+{% endschema %}

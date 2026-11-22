@@ -1,0 +1,49 @@
+{%- assign current = product.selected_or_first_available_variant -%}
+<section class="section">
+  <div class="wrap product">
+    <div class="gallery">
+      {%- for image in product.images -%}
+        {{ image | image_url: width: 1400 | image_tag: loading: 'lazy', alt: image.alt | default: product.title }}
+      {%- endfor -%}
+    </div>
+    <div class="buy">
+      <p class="kick">{% if product.price == 0 %}Free{% else %}{{ shop.name }}{% endif %}</p>
+      <h1>{{ product.title }}</h1>
+      {% render 'price', product: product %}
+      {%- form 'product', product -%}
+        {%- if product.has_only_default_variant -%}
+          <input type="hidden" name="id" value="{{ current.id }}">
+        {%- else -%}
+          <div>
+            <label for="variant">Option</label>
+            <select id="variant" name="id">
+              {%- for variant in product.variants -%}
+                <option value="{{ variant.id }}"{% if variant == current %} selected{% endif %}{% unless variant.available %} disabled{% endunless %}>{{ variant.title }} – {{ variant.price | money }}</option>
+              {%- endfor -%}
+            </select>
+          </div>
+        {%- endif -%}
+        {%- if product.price == 0 -%}<input type="hidden" name="return_to" value="/checkout">{%- endif -%}
+        <button class="button" type="submit"{% unless current.available %} disabled{% endunless %}>
+          {%- if current.available -%}{% if product.price == 0 %}Get it free{% else %}Add to cart{% endif %}{%- else %}Sold out{% endif -%}
+        </button>
+      {%- endform -%}
+      {%- if section.settings.perks != blank -%}
+        <ul class="perks">
+          {%- assign perks = section.settings.perks | newline_to_br | split: '<br />' -%}
+          {%- for perk in perks -%}{%- assign line = perk | strip -%}{%- if line != blank -%}<li>{{ line }}</li>{%- endif -%}{%- endfor -%}
+        </ul>
+      {%- endif -%}
+      <div class="rte">{{ product.description }}</div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product",
+  "settings": [
+    { "type": "textarea", "id": "perks", "label": "Perks (one per line)", "default": "Instant download by email\nNo account needed\nYours to keep" }
+  ]
+}
+{% endschema %}

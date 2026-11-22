@@ -1,0 +1,40 @@
+<section class="section">
+  <div class="wrap">
+    <h1>Cart</h1>
+    {%- if cart.item_count == 0 -%}
+      <p class="muted">Your cart is empty.</p>
+      <a class="button" href="{{ routes.all_products_collection_url }}">Browse products</a>
+    {%- else -%}
+      {%- form 'cart', cart -%}
+        <table class="cart-table">
+          <thead><tr><th>Product</th><th>Qty</th><th>Total</th><th></th></tr></thead>
+          <tbody>
+            {%- for item in cart.items -%}
+              <tr>
+                <td>
+                  <a href="{{ item.url }}">{{ item.product.title }}</a>
+                  {%- unless item.product.has_only_default_variant %}<br><span class="muted">{{ item.variant.title }}</span>{% endunless -%}
+                </td>
+                <td><label class="skip" for="qty-{{ item.index }}">Quantity</label><input id="qty-{{ item.index }}" type="number" name="updates[]" value="{{ item.quantity }}" min="0"></td>
+                <td class="price">{{ item.final_line_price | money }}</td>
+                <td><a href="{{ item.url_to_remove }}">Remove</a></td>
+              </tr>
+            {%- endfor -%}
+          </tbody>
+        </table>
+        <div class="cart-foot">
+          <p class="mono" style="font-size: 1.2rem;">Subtotal {{ cart.total_price | money }}</p>
+          <p class="muted">Taxes are added at checkout.</p>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <button class="button ghost" type="submit" name="update">Update cart</button>
+            <button class="button" type="submit" name="checkout">Check out</button>
+          </div>
+        </div>
+      {%- endform -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Cart" }
+{% endschema %}

@@ -1,0 +1,39 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Sebayt",
+    "theme_version": "2.0.0",
+    "theme_author": "Sebayt Labs",
+    "theme_documentation_url": "https://sebaytlabs.com",
+    "theme_support_email": "contact@sebaytlabs.com"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      { "type": "color", "id": "color_bg", "label": "Page background", "default": "#fbf7ec" },
+      { "type": "color", "id": "color_surface", "label": "Cards and panels", "default": "#f1e7cf" },
+      { "type": "color", "id": "color_border", "label": "Borders", "default": "#dccfae" },
+      { "type": "color", "id": "color_text", "label": "Text", "default": "#1b1a17" },
+      { "type": "color", "id": "color_muted", "label": "Muted text", "default": "#6b6455" },
+      { "type": "color", "id": "color_accent", "label": "Deep blue (buttons, dark sections)", "default": "#14264d" },
+      { "type": "color", "id": "color_accent_text", "label": "Text on deep blue", "default": "#f7f1e1" },
+      { "type": "color", "id": "color_gold", "label": "Gold", "default": "#b98a2e" },
+      { "type": "color", "id": "color_gold_light", "label": "Light gold (on dark)", "default": "#e2bf6a" }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      { "type": "range", "id": "page_width", "label": "Page width", "min": 960, "max": 1440, "step": 40, "unit": "px", "default": 1120 }
+    ]
+  },
+  {
+    "name": "Social accounts",
+    "settings": [
+      { "type": "text", "id": "social_youtube", "label": "YouTube", "default": "https://www.youtube.com/@sebaytlabs" },
+      { "type": "text", "id": "social_instagram", "label": "Instagram", "default": "https://www.instagram.com/sebaytlabs/" },
+      { "type": "text", "id": "social_facebook", "label": "Facebook", "default": "https://www.facebook.com/profile.php?id=61595435445875" },
+      { "type": "text", "id": "social_threads", "label": "Threads", "default": "https://www.threads.net/@sebaytlabs" }
+    ]
+  }
+]

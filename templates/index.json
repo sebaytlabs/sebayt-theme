@@ -1,0 +1,20 @@
+{
+  "sections": {
+    "hero": { "type": "home-hero", "settings": {} },
+    "beliefs": {
+      "type": "home-beliefs",
+      "blocks": {
+        "b1": { "type": "belief", "settings": { "title": "Curious", "text": "We ask why it's done that way, and whether it has to be. Most of the time it doesn't." } },
+        "b2": { "type": "belief", "settings": { "title": "Economical", "text": "Good things shouldn't cost a fortune. The first thing we built is free." } },
+        "b3": { "type": "belief", "settings": { "title": "Good for the world", "text": "If there's a version that's kinder to people and the planet, that's the one we make." } }
+      },
+      "block_order": ["b1", "b2", "b3"],
+      "settings": {}
+    },
+    "feature": { "type": "home-feature", "settings": { "product": "simplebrain" } },
+    "notes": { "type": "home-notes-name", "settings": {} },
+    "quote": { "type": "home-quote", "settings": {} },
+    "follow": { "type": "home-follow", "settings": {} }
+  },
+  "order": ["hero", "beliefs", "feature", "notes", "quote", "follow"]
+}

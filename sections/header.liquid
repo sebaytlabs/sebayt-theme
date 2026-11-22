@@ -1,0 +1,33 @@
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="{{ routes.root_url }}" aria-label="{{ shop.name }} home">
+      <span class="brand-main">SEBAYT</span><span class="brand-sub">LABS</span>
+    </a>
+    <nav class="nav-desktop" aria-label="Main">
+      {%- for link in linklists[section.settings.menu].links -%}
+        <a href="{{ link.url }}"{% if link.active %} aria-current="page"{% endif %}>{{ link.title }}</a>
+      {%- endfor -%}
+    </nav>
+    <a class="cart-link" href="{{ routes.cart_url }}" aria-label="Cart, {{ cart.item_count }} items">
+      Cart{% if cart.item_count > 0 %} <span>{{ cart.item_count }}</span>{% endif %}
+    </a>
+    <details class="nav-mobile">
+      <summary aria-label="Menu"><span></span><span></span><span></span></summary>
+      <nav aria-label="Mobile">
+        {%- for link in linklists[section.settings.menu].links -%}
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        {%- endfor -%}
+      </nav>
+    </details>
+  </div>
+  <div class="pattern" aria-hidden="true"></div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" }
+  ]
+}
+{% endschema %}

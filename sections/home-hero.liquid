@@ -1,0 +1,33 @@
+<section class="h-hero">
+  <div class="wrap">
+    <p class="kick">{{ section.settings.kicker }}</p>
+    <h1>{{ section.settings.heading }} <em>{{ section.settings.accent }}</em></h1>
+    <p class="lede">{{ section.settings.text }}</p>
+    <div class="btns">
+      {%- if section.settings.button_label != blank -%}
+        <a class="button gold" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">{{ section.settings.button_label }}</a>
+      {%- endif -%}
+      {%- if section.settings.button2_label != blank -%}
+        <a class="button line" href="{{ section.settings.button2_link | default: routes.root_url }}">{{ section.settings.button2_label }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+<div class="pattern" aria-hidden="true"></div>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Small line above", "default": "Sebayt Labs · sbꜣyt · “teachings”" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Why should it cost so much to be" },
+    { "type": "text", "id": "accent", "label": "Heading (gold italic end)", "default": "disappointed?" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Everyone says that's just how it's done. We don't buy it. We build the better version, for the love of building it, and we teach you how it works." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Get SimpleBrain, free" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "text", "id": "button2_label", "label": "Second button label", "default": "Why we do this" },
+    { "type": "url", "id": "button2_link", "label": "Second button link" }
+  ],
+  "presets": [{ "name": "Hero" }]
+}
+{% endschema %}

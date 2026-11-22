@@ -1,0 +1,19 @@
+<section class="section">
+  <div class="wrap">
+    <h1>Collections</h1>
+    <div class="grid" style="margin-top: 28px;">
+      {%- for collection in collections -%}
+        <article class="card"><a href="{{ collection.url }}">
+          <div class="thumb">
+            {%- if collection.image -%}{{ collection.image | image_url: width: 600 | image_tag: loading: 'lazy' }}{%- else -%}<span>Sebayt</span>{%- endif -%}
+          </div>
+          <div class="info"><p class="title">{{ collection.title }}</p><span class="muted">{{ collection.products_count }} items</span></div>
+        </a></article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Collections list" }
+{% endschema %}

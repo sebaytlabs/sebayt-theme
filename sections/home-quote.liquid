@@ -1,0 +1,17 @@
+<section class="h-quote">
+  <div class="wrap">
+    <blockquote>{{ section.settings.quote }}</blockquote>
+    <cite>{{ section.settings.cite }}</cite>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Big quote",
+  "settings": [
+    { "type": "textarea", "id": "quote", "label": "Quote", "default": "We're not doing this for the money. We're doing it because why not." },
+    { "type": "text", "id": "cite", "label": "Credit", "default": "Sebayt Labs" }
+  ],
+  "presets": [{ "name": "Big quote" }]
+}
+{% endschema %}

@@ -1,0 +1,7 @@
+{%- comment -%} Price of a product: "Free" at zero, otherwise the price, with the old price struck through on sale. {%- endcomment -%}
+<span class="price">
+  {%- if product.price == 0 -%}Free{%- else -%}
+    {{ product.price | money }}
+    {%- if product.compare_at_price > product.price %}<s>{{ product.compare_at_price | money }}</s>{% endif -%}
+  {%- endif -%}
+</span>

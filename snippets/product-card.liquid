@@ -1,0 +1,15 @@
+<article class="card">
+  <a href="{{ product.url }}">
+    <div class="thumb">
+      {%- if product.featured_image -%}
+        {{ product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: product.featured_image.alt | default: product.title }}
+      {%- else -%}
+        <span>Sebayt</span>
+      {%- endif -%}
+    </div>
+    <div class="info">
+      <p class="title">{{ product.title }}</p>
+      {% render 'price', product: product %}
+    </div>
+  </a>
+</article>
