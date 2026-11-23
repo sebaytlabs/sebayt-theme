@@ -2,7 +2,7 @@
 
 The Shopify theme behind [sebaytlabs.com](https://sebaytlabs.com), written by hand in Liquid and plain CSS. There's no build step, no JavaScript framework and no app.
 
-It's small on purpose: 24 sections, 3 snippets and one stylesheet. It covers what a studio shop needs:
+It's small on purpose: 22 sections (plus the header and footer groups), 3 snippets and one stylesheet. It covers what a studio shop needs:
 
 - **Home page:** a hero, a featured product, beliefs, a quote, a follow row and a notes section, all editable in the theme editor
 - **Products:** product pages, collections and the list of all collections
@@ -50,7 +50,7 @@ sections/home-*.liquid   the home page blocks
 sections/main-*.liquid   one per page type
 snippets/                price, product card, CSS variables from the theme settings
 assets/theme.css         all the styling
-config/                  settings schema (colors, fonts, social links)
+config/                  settings schema (colors, page width, social links)
 templates/*.json         which sections each page type uses
 ```
 
@@ -62,6 +62,7 @@ Everything else Sebayt Labs makes is listed on the [profile page](https://github
 
 - It's built for a small catalog. There are no product filters, mega menus or multi-currency switchers.
 - One language.
+- The fonts are fixed: Fraunces for headings and Inter for text, loaded from Google Fonts in `layout/theme.liquid`. Change them there; they aren't in Theme settings.
 - You'll want to change the words: the home sections ship with studio-style placeholders.
 
 ## License
