@@ -1,3 +1,5 @@
+<img src="icon.svg" alt="" width="112" align="right">
+
 # Sebayt Theme
 
 The Shopify theme behind [sebaytlabs.com](https://sebaytlabs.com), written by hand in Liquid and plain CSS. There's no build step, no JavaScript framework and no app.
